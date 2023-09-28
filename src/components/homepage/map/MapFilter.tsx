@@ -12,16 +12,7 @@ const MapFilter = ({}: MapProps) => {
     <MapFilterStyled>
       <NavBar />
       <HeadMap />
-
-      <ItemsList
-      // id={""}
-      // category={""}
-      // title={""}
-      // price={""}
-      // imgLink={""}
-      // available={false}
-      // categoryId={""}
-      />
+      <ItemsList />
     </MapFilterStyled>
   );
 };

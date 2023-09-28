@@ -12,11 +12,10 @@ type Items = {
   categoryId: string;
 };
 
-const ItemsList = ({}: Items) => {
+const ItemsList = () => {
   // state --------------
   const [allItems] = useState<Items[]>(fakeData);
   console.log("value of allItems:", allItems);
-
   // comportement -------------
   //   useEffect(() => {
   //     const getItems = () => {
@@ -24,6 +23,7 @@ const ItemsList = ({}: Items) => {
   //     };
   //     getItems();
   //   }, [allItems]);
+
   return (
     <ItemsListStyled>
       <div className="overfow">
