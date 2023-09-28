@@ -1,15 +1,27 @@
 import styled from "styled-components";
 import NavBar from "./NavBar";
+import ItemsList from "./ItemsList";
+import HeadMap from "./HeadMap";
 
 type MapProps = {
   name: string | null;
 };
 
-const MapFilter = ({ name }: MapProps) => {
+const MapFilter = ({}: MapProps) => {
   return (
     <MapFilterStyled>
       <NavBar />
-      <h2>Hello {name} !!!</h2>
+      <HeadMap />
+
+      <ItemsList
+      // id={""}
+      // category={""}
+      // title={""}
+      // price={""}
+      // imgLink={""}
+      // available={false}
+      // categoryId={""}
+      />
     </MapFilterStyled>
   );
 };
@@ -17,12 +29,10 @@ const MapFilter = ({ name }: MapProps) => {
 const MapFilterStyled = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 550px;
-  width: 70%;
+  width: 80%;
   background-color: white;
-  position: relative;
+  border: 3px solid orange;
 
   h2 {
     color: orange;

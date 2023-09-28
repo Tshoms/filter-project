@@ -26,8 +26,6 @@ const NavbarStyled = styled.div`
   height: 50px;
   width: 100%;
   background-color: blue;
-  top: 0;
-  position: absolute;
 
   .section {
     display: flex;
