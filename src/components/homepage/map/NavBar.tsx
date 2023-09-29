@@ -5,13 +5,26 @@ const NavBar = () => {
     <NavbarStyled>
       <div className="section">
         <div className="cham">
-          <input type="text" placeholder="champ" />
+          {/* <input type="text" placeholder="champ" /> */}
+          <select>
+            <option value="tous">propriété</option>
+            <option value="1">ID</option>
+            <option value="2">price</option>
+            <option value="3">title</option>
+            <option value="4">available</option>
+          </select>
         </div>
         <div className="operator">
-          <input type="text" placeholder="operator" />
+          <select>
+            <option value="tous">opérateur</option>
+            <option value="1">Différent de (ne)</option>
+            <option value="2">Egal à (eq)</option>
+            <option value="3">Supérieur à (gt)</option>
+            <option value="4">Inférieur à (lT)</option>
+          </select>
         </div>
         <div className="id">
-          <input type="text" placeholder="id" />
+          <input type="text" placeholder="valeur" />
         </div>
       </div>
     </NavbarStyled>
