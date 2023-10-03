@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { ArrayContextProvider } from "../../contex/ArrayContext";
 import styled from "styled-components";
 import MapFilter from "./map/MapFilter";
 
@@ -7,11 +8,14 @@ const Home = () => {
   const [searchParams] = useSearchParams();
   const userName = searchParams.get("userName");
   console.log("userName value :", userName);
+
   // comportement -----------
   return (
     <HomeStyled>
       <h1>Filter - Project</h1>
-      <MapFilter name={userName} />
+      <ArrayContextProvider>
+        <MapFilter name={userName} />
+      </ArrayContextProvider>
     </HomeStyled>
   );
 };

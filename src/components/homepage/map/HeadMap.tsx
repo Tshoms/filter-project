@@ -3,28 +3,29 @@ import styled from "styled-components";
 const HeadMap = () => {
   return (
     <HeadMapStyled>
-      <tr>
-        <th>id</th>
-        <th>catégorie</th>
-        <th>title</th>
-        <th>price</th>
-      </tr>
+      <div className="tr">
+        <div className="th">id</div>
+        <div className="th">catégorie</div>
+        <div className="th">title</div>
+        <div className="th">price</div>
+      </div>
     </HeadMapStyled>
   );
 };
 
 const HeadMapStyled = styled.div`
   display: flex;
-  flex-direction: row;
   height: 20px;
   width: 100%;
   /* border: 1px solid black; */
 
-  tr {
+  .tr {
+    display: flex;
+    flex-direction: row;
     height: 100%;
     width: 100%;
     /* border: 1px solid red; */
-    th {
+    .th {
       height: 100%;
       width: 260px;
       border: 1px solid black;

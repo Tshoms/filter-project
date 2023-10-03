@@ -1,6 +1,7 @@
 import fakeData from "../../../data/fakeDate";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFiltre from "../../../hook/useFiltre";
 
 type Items = {
   id: string;
@@ -14,28 +15,34 @@ type Items = {
 
 const ItemsList = () => {
   // state --------------
-  const [allItems] = useState<Items[]>(fakeData);
-  console.log("value of allItems:", allItems);
+  const { arrayFilter } = useFiltre();
+  const [allItems, setAllItems] = useState<Items[]>(fakeData);
+  console.log("valeur de arrayFilter:", arrayFilter);
+
+  // CONTEXT ARRAY --------
+
   // comportement -------------
-  //   useEffect(() => {
-  //     const getItems = () => {
-  //       setAllItems(fakeData);
-  //     };
-  //     getItems();
-  //   }, [allItems]);
+  useEffect(() => {
+    const getItems = () => {
+      if (arrayFilter !== undefined) {
+        setAllItems(arrayFilter);
+      } else {
+        setAllItems(allItems);
+      }
+    };
+    getItems();
+  }, [allItems]);
 
   return (
     <ItemsListStyled>
-      <div className="overfow">
-        {allItems.map((item) => (
-          <tr>
-            <td>{item.id}</td>
-            <td>{item.category}</td>
-            <td>{item.title}</td>
-            <td>{item.price}</td>
-          </tr>
-        ))}
-      </div>
+      {allItems.map((item) => (
+        <div className="tr" key={item.id}>
+          <div className="td">{item.id}</div>
+          <div className="td">{item.category}</div>
+          <div className="td">{item.title}</div>
+          <div className="td">{item.price}</div>
+        </div>
+      ))}
     </ItemsListStyled>
   );
 };
@@ -45,6 +52,7 @@ const ItemsListStyled = styled.div`
   flex-direction: column;
   height: 500px;
   width: 100%;
+  overflow-y: scroll;
 
   .overfow {
     height: 100%;
@@ -52,11 +60,13 @@ const ItemsListStyled = styled.div`
     overflow-y: scroll;
   }
 
-  tr {
+  .tr {
+    display: flex;
+    flex-direction: row;
     height: 30px;
     width: 100%;
 
-    td {
+    .td {
       height: 30px;
       width: 258px;
       font-size: 12px;
