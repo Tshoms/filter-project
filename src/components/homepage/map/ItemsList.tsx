@@ -1,41 +1,27 @@
-import fakeData from "../../../data/fakeDate";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import useFiltre from "../../../hook/useFiltre";
-
-type Items = {
-  id: string;
-  category: string;
-  title: string;
-  price: string;
-  imgLink: string;
-  available: boolean;
-  categoryId: string;
-};
+import { useContext, useEffect } from "react";
+import { ArrayContext } from "../../../contex/ArrayContext";
+import { arrayData } from "../../../contex/arrayData";
 
 const ItemsList = () => {
   // state --------------
-  const { arrayFilter } = useFiltre();
-  const [allItems, setAllItems] = useState<Items[]>(fakeData);
-  console.log("valeur de arrayFilter:", arrayFilter);
-
-  // CONTEXT ARRAY --------
-
+  const array = useContext(ArrayContext);
+  console.log("valeur du array context:", array?.array);
   // comportement -------------
   useEffect(() => {
     const getItems = () => {
-      if (arrayFilter !== undefined) {
-        setAllItems(arrayFilter);
+      if (array?.array !== undefined) {
+        array.setArray(array?.array);
       } else {
-        setAllItems(allItems);
+        array?.setArray(arrayData);
       }
     };
     getItems();
-  }, [allItems]);
+  }, [array?.array]);
 
   return (
     <ItemsListStyled>
-      {allItems.map((item) => (
+      {array?.array.map((item) => (
         <div className="tr" key={item.id}>
           <div className="td">{item.id}</div>
           <div className="td">{item.category}</div>

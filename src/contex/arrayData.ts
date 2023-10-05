@@ -1,13 +1,13 @@
 import fakeData from "../data/fakeDate";
-
-// type Items = {
-//   id: string;
-//   category: string;
-//   title: string;
-//   price: string;
-//   imgLink: string;
-//   available: boolean;
-//   categoryId: string;
-// };
-
-export const arrayData = fakeData;
+// type ------
+export type Items = {
+  id: string;
+  category: string;
+  title: string;
+  price: string;
+  imgLink: string;
+  available: boolean;
+  categoryId: string;
+}[];
+// variable -------
+export const arrayData: Items = fakeData;

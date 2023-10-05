@@ -1,5 +1,8 @@
-import { useState } from "react";
-import fakeData from "../data/fakeDate";
+import { useContext, useState } from "react";
+import { arrayData } from "../contex/arrayData";
+import { ArrayContext } from "../contex/ArrayContext";
+// import fakeData from "../data/fakeDate";
+arrayData;
 
 type Items = {
   id: string;
@@ -14,7 +17,9 @@ type Items = {
 type ValueInput = string | number | readonly string[] | undefined;
 
 export const useFiltre = () => {
-  const [arrayFilter, setArrayFilter] = useState<Items[]>(fakeData);
+  const array = useContext(ArrayContext);
+  const [arrayFilter, setArrayFilter] = useState<Items[]>(arrayData);
+  console.log("value of array :", array?.array);
   console.log("value of arrayItems:", arrayFilter);
   const handleFilter = (
     valueone: string,
@@ -32,45 +37,50 @@ export const useFiltre = () => {
           console.log(`${valueone} : id `);
 
           let id = valuethree;
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.id !== id);
           setArrayFilter(resultArray);
+          array?.setArray(resultArray);
 
-          return console.log(arrayFilter);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "2") {
           console.log(`${valueone} : price `);
 
           let price = valuethree?.toString();
           console.log(price);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.price !== price);
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "3") {
           console.log(`${valueone} : title `);
           let title = valuethree;
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.title !== title);
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "4" && valuethree === "indisponible") {
           console.log(`${valuethree} : value  `);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.available === true);
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "4" && valuethree === "disponible") {
           console.log(`${valuethree} : value  `);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter(
             (item) => item.available === false
           );
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         break;
       case "2":
@@ -78,44 +88,49 @@ export const useFiltre = () => {
         if (valueone === "1") {
           console.log(`${valueone} : id `);
           let id = valuethree;
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.id === id);
           setArrayFilter(resultArray);
+          array?.setArray(resultArray);
 
-          return console.log(arrayFilter);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "2") {
           console.log(`${valueone} : price `);
           let price = valuethree?.toString();
           console.log(typeof price);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.price === price);
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "3") {
           console.log(`${valueone} : title `);
           let title = valuethree;
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.title === title);
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "4" && valuethree === "disponible") {
           console.log(`${valuethree} : value  `);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.available === true);
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         if (valueone === "4" && valuethree === "indisponible") {
           console.log(`${valuethree} : value  `);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter(
             (item) => item.available === false
           );
           setArrayFilter(resultArray);
-          return console.log(arrayFilter);
+          array?.setArray(resultArray);
+          //   return console.log(arrayFilter);
         }
         break;
       case "3":
@@ -123,21 +138,23 @@ export const useFiltre = () => {
         if (valueone === "1") {
           console.log(`${valueone} : id `);
           let id = Number(valuethree);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => Number(item.id) > id);
           setArrayFilter(resultArray);
+          array?.setArray(resultArray);
         }
         if (valueone === "2") {
           console.log(`${valueone} : price `);
           let price = Number(valuethree);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter(
             (item) => Number(item.price) > price
           );
           setArrayFilter(resultArray);
+          array?.setArray(resultArray);
         }
         if (valueone === "3" || valueone === "4") {
-          console.log(
+          alert(
             "Pour l'opération supérieur seul les propriété tels que : prix et id sont valable !"
           );
         }
@@ -149,21 +166,23 @@ export const useFiltre = () => {
           console.log(`${valueone} : id `);
           console.log(`${valueone} : id `);
           let id = Number(valuethree);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => Number(item.id) < id);
           setArrayFilter(resultArray);
+          array?.setArray(resultArray);
         }
         if (valueone === "2") {
           console.log(`${valueone} : price `);
           let price = Number(valuethree);
-          let copyArray = [...fakeData];
+          let copyArray = [...arrayData];
           let resultArray = copyArray.filter(
             (item) => Number(item.price) < price
           );
           setArrayFilter(resultArray);
+          array?.setArray(resultArray);
         }
         if (valueone === "3" || valueone === "4") {
-          console.log(
+          alert(
             "Pour l'opération inférieur seul les propriété tels que : prix et id sont valable !"
           );
         }
