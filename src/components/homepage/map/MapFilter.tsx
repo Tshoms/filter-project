@@ -35,7 +35,7 @@ const MapFilterStyled = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 7px;
+    margin-top: 9px;
     margin-left: 10px;
     position: absolute;
 
