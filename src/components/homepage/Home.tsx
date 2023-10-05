@@ -7,7 +7,6 @@ const Home = () => {
   // state ---------------
   const [searchParams] = useSearchParams();
   const userName = searchParams.get("userName");
-  console.log("userName value :", userName);
 
   // comportement -----------
   return (

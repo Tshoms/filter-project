@@ -22,6 +22,13 @@ const NavBar = () => {
     getFilter();
   }, [proprieteValue, operateurValue, searchValue]);
 
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    window.location.reload();
+  };
+
   return (
     <NavbarStyled>
       <div className="section">
@@ -51,13 +58,16 @@ const NavBar = () => {
             <option value="4">Inférieur à (lT)</option>
           </select>
         </div>
-        <div className="id">
+        <div>
           <input
             type="text"
             placeholder="valeur"
             onChange={(e) => setSearchValue(e.target.value)}
             value={searchValue}
           />
+        </div>
+        <div className="reset">
+          <button onClick={handleClick}>réinitialiser</button>
         </div>
       </div>
     </NavbarStyled>
@@ -81,7 +91,9 @@ const NavbarStyled = styled.div`
     .cham {
       height: 90%;
       width: 45%;
-      /* border: 1px solid red; */
+    }
+    .reset {
+      margin-left: 10px;
     }
   }
 

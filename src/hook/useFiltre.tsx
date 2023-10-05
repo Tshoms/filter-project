@@ -1,26 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { arrayData } from "../contex/arrayData";
 import { ArrayContext } from "../contex/ArrayContext";
-// import fakeData from "../data/fakeDate";
-arrayData;
-
-type Items = {
-  id: string;
-  category: string;
-  title: string;
-  price: string;
-  imgLink: string;
-  available: boolean;
-  categoryId: string;
-};
 
 type ValueInput = string | number | readonly string[] | undefined;
 
 export const useFiltre = () => {
   const array = useContext(ArrayContext);
-  const [arrayFilter, setArrayFilter] = useState<Items[]>(arrayData);
   console.log("value of array :", array?.array);
-  console.log("value of arrayItems:", arrayFilter);
+
   const handleFilter = (
     valueone: string,
     valuetwo: string,
@@ -39,7 +26,6 @@ export const useFiltre = () => {
           let id = valuethree;
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.id !== id);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
 
           //   return console.log(arrayFilter);
@@ -51,7 +37,6 @@ export const useFiltre = () => {
           console.log(price);
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.price !== price);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -60,7 +45,6 @@ export const useFiltre = () => {
           let title = valuethree;
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.title !== title);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -68,7 +52,6 @@ export const useFiltre = () => {
           console.log(`${valuethree} : value  `);
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.available === true);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -78,7 +61,6 @@ export const useFiltre = () => {
           let resultArray = copyArray.filter(
             (item) => item.available === false
           );
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -90,7 +72,6 @@ export const useFiltre = () => {
           let id = valuethree;
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.id === id);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
 
           //   return console.log(arrayFilter);
@@ -101,7 +82,6 @@ export const useFiltre = () => {
           console.log(typeof price);
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.price === price);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -110,7 +90,6 @@ export const useFiltre = () => {
           let title = valuethree;
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.title === title);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -118,7 +97,6 @@ export const useFiltre = () => {
           console.log(`${valuethree} : value  `);
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => item.available === true);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -128,7 +106,6 @@ export const useFiltre = () => {
           let resultArray = copyArray.filter(
             (item) => item.available === false
           );
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
           //   return console.log(arrayFilter);
         }
@@ -140,7 +117,6 @@ export const useFiltre = () => {
           let id = Number(valuethree);
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => Number(item.id) > id);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
         }
         if (valueone === "2") {
@@ -150,7 +126,6 @@ export const useFiltre = () => {
           let resultArray = copyArray.filter(
             (item) => Number(item.price) > price
           );
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
         }
         if (valueone === "3" || valueone === "4") {
@@ -168,7 +143,6 @@ export const useFiltre = () => {
           let id = Number(valuethree);
           let copyArray = [...arrayData];
           let resultArray = copyArray.filter((item) => Number(item.id) < id);
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
         }
         if (valueone === "2") {
@@ -178,7 +152,6 @@ export const useFiltre = () => {
           let resultArray = copyArray.filter(
             (item) => Number(item.price) < price
           );
-          setArrayFilter(resultArray);
           array?.setArray(resultArray);
         }
         if (valueone === "3" || valueone === "4") {
@@ -193,7 +166,7 @@ export const useFiltre = () => {
         break;
     }
   };
-  return { handleFilter, arrayFilter };
+  return { handleFilter };
 };
 
 export default useFiltre;
